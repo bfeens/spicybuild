@@ -18,9 +18,15 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<div id="content" class="site-content" role="main">
+		<?php if ( is_home() && ! is_front_page() ) : ?>
+			<header>
+				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			</header>
+		<?php endif; ?>
 		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-		     <?php the_content(); /*A loop of content by full content */ ?>
+			<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', '_s' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>		    
+			<?php the_content(); /*A loop of content by full content */ ?>
 		<?php endwhile; ?>
 	</div><!-- #content .site-content -->
 
@@ -31,3 +37,6 @@ get_header(); ?>
 		</div><!-- .entry-summary -->
 	<?php endwhile; ?>
 </div><!-- #primary .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
