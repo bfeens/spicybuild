@@ -13,8 +13,7 @@
  */
 
 get_header(); ?>
-
-<!-- Using the tutorial found here: http://themeshaper.com/2012/11/01/the-wordpress-theme-index-template/ --> 
+<!-- NEW COMMENT --> 
 
 <div id="primary" class="content-area">
 	<div id="content" class="site-content" role="main">
