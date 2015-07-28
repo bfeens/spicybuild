@@ -11,4 +11,4 @@ There is currently no wordpress download. Clone this repo in order to use.
 
 ##Credit
 - Original files provided by [Underscores.me] (http://underscores.me)
-- Tutorials by [Treehouse] (http://wwww.teamtreehouse.com) and [Lynda] (http://www.lynda.com)
+- Tutorials by [Treehouse] (http://www.teamtreehouse.com) and [Lynda] (http://www.lynda.com)
