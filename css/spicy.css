@@ -3,6 +3,7 @@
 /* 
 
 	1. Typography 
+	==============================
 
 */ 
 
@@ -17,8 +18,60 @@ h6, h6 a { color: rgb(255, 99, 71);}
 
 /* 
 
-	2. Masonry 
+	2. Basic Structure 
+	==============================
 
 */ 
 
-#page { padding: 20px; } 
+#page { padding: 0px; } 
+
+
+/* 	2.1. Header */ 
+
+.header-wrapper { 
+	background-color: rgba(99,23,5,5);
+}
+
+.header-content { 
+	max-width: 920px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.site-navigation-secondary-wrapper { 
+	position: absolute; 
+	top: 0px; 
+	right: 30px; 
+}
+
+#site-navigation-secondary ul { 
+	margin: 0; 
+	padding: 0; 
+	list-style-type: none; 
+	list-style-image: none; 
+}
+
+#site-navigation-secondary li {
+	display: inline; 
+	padding: 5px 10px 5px 0px
+}
+
+#site-navigation-secondary  a {
+	text-decoration:none; color: #fff9d8; 
+}
+
+#site-navigation-secondary  a:hover {
+	text-decoration: underline; 
+}
+
+.search-form-header { background: #FFAAFF;}
+
+/* 
+
+	3. Repeatable Elements 
+	==============================
+
+*/ 
+
+.site-title { font-size: 18px; }
