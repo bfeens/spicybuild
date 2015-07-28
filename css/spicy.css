@@ -1,19 +1,31 @@
 /* Big screen css TK */
 
+
+
 /* 
 
-	1. Typography 
-	==============================
+	0.0 Resets
 
 */ 
 
-h1, h1 a, 
-h2, h2 a,
-h3, h3 a,
-h4, h4 a,
-h5, h5 a,
-h6, h6 a { color: rgb(255, 99, 71);}
+.screen-reader-text { 
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	right: 0; 
+}
 
+
+/* 
+
+	0. Typography 
+	==============================
+
+*/ 
+ 
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { 
+	font-family: 'Roboto Slab', Georgia, serif;
+}
 
 
 /* 
@@ -37,12 +49,11 @@ h6, h6 a { color: rgb(255, 99, 71);}
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
+	padding-top: 4px;
 }
 
 .site-navigation-secondary-wrapper { 
-	position: absolute; 
-	top: 0px; 
-	right: 30px; 
+ 
 }
 
 #site-navigation-secondary ul { 
@@ -50,22 +61,25 @@ h6, h6 a { color: rgb(255, 99, 71);}
 	padding: 0; 
 	list-style-type: none; 
 	list-style-image: none; 
+	float: right;
 }
 
 #site-navigation-secondary li {
 	display: inline; 
-	padding: 5px 10px 5px 0px
+	padding: 5px 10px 5px 0px;
+	font-size: 10px;
+	font-family: 'Roboto Slab', Georgia, serif;
 }
 
 #site-navigation-secondary  a {
-	text-decoration:none; color: #fff9d8; 
+	text-decoration:none; color: #fff9d8;  	/* TODO SASS Color Profile */ 
 }
 
 #site-navigation-secondary  a:hover {
 	text-decoration: underline; 
 }
 
-.search-form-header { background: #FFAAFF;}
+.search-form-header { background: none;}
 
 /* 
 
@@ -75,3 +89,32 @@ h6, h6 a { color: rgb(255, 99, 71);}
 */ 
 
 .site-title { font-size: 18px; }
+
+input[type="search"] {  				/* Prevents the search field from growing too large. */
+	box-sizing: border-box; 
+	width: 100%;
+}
+
+.search-form .search-field { 			/* Styling for the search field */ 
+	max-width: 362px;
+	float: right;
+	padding: .5rem 1rem .5rem 2rem;
+	font-size: 10px;
+	background-color: rgba(0,0,0,0);
+	border: 2px solid rgb(156, 96, 81);
+	cursor: auto;
+	color: #fff9d8; 					/* TODO SASS Color Profile */ 
+
+}
+
+.search-form .search-field:focus { 
+	border: 2px solid rgb(240,240,240);
+	outline: none;						/* Takes away the blue glow when the field is in focus */
+}
+
+.search-form .search-submit, 			/* Hides the search button on all pages it appears */ 
+.error404 .search-submit, 		
+.search .search-submit, 
+.search-box .search-submit { 
+	display: none;
+}
