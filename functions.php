@@ -67,6 +67,8 @@ function spicy_scripts() {
 
 	wp_enqueue_style( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' ); 
 
+	wp_enqueue_style( 'google-font-roboto-slab', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,100,300' );
+
 	wp_enqueue_style( 'spicy-custom', get_template_directory_uri() . '/css/spicy.css', 'bootstrap-min', '' , screen );
 
 	wp_enqueue_script( 'spicy-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
