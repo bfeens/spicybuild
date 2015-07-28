@@ -10,5 +10,5 @@ Admins and mods should be familiar with basic theming.
 There is currently no wordpress download. Clone this repo in order to use. 
 
 ##Credit
-- Original files provided by [Underscores.me] (http://underscores.mp)
+- Original files provided by [Underscores.me] (http://underscores.me)
 - Tutorials by [Treehouse] (http://wwww.teamtreehouse.com) and [Lynda] (http://www.lynda.com)
