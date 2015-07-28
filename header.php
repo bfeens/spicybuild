@@ -39,7 +39,7 @@
 					</nav><!-- #site-navigation-secondary -->
 				</div><!-- .site-navigation-secondary-wrapper --> 
 				<div class="search-form-header">
-					<?php get_search_form( $echo ); ?>TEST!!!!
+					<?php get_search_form(); ?>TEST!!!!
 				</div>
 				<nav id="site-navigation-primary" class="main-navigation" role="navigation">
 					<!-- TODO: Figure out how to use this button <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'spicy' ); ?></button>-->
