@@ -38,6 +38,28 @@ endif; // spicy_setup
 add_action( 'after_setup_theme', 'spicy_setup' );
 
 
+function spicy_theme_customizer( $wp_customize ) {
+
+	/* This creates a section to load in a new site logo */
+	$wp_customize->add_section( 'themeslug_logo_section' , array(
+	    'title'       => __( 'Logo', 'spicy' ),
+	    'priority'    => 30,
+	    'description' => 'Upload a logo to replace the default site name and description in the header',
+		) 
+	);
+
+	$wp_customize->add_setting( 'themeslug_logo' );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'themeslug_logo', array(
+    	'label'    => __( 'Logo', 'spicy' ), 
+   		'section'  => 'spicy_logo_section',
+    	'settings' => 'spicy_logo',
+    	) 
+	) 
+);
+}
+add_action( 'customize_register', 'themeslug_theme_customizer' );
+
 
 /**
  * Register widget area.

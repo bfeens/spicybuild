@@ -26,12 +26,16 @@
 			<div class="row">
 			<header id="masthead" class="site-header" role="banner">
 					<div class="site-branding col-md-4">
-						<?php if ( is_front_page() && is_home() ) : ?>
-							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-						<?php else : ?>
-							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<?php endif; ?>
-						<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+								<?php if ( get_theme_mod( 'spicy_logo' ) ) : ?>
+							    <div class='site-logo'>
+							        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'spicy_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+							    </div>
+							<?php else : ?>
+							    <hgroup>
+							        <h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a></h1>
+							        <h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
+							    </hgroup>
+							<?php endif; ?>
 					</div><!-- .site-branding -->
 					<div class="site-navigation-secondary-wrapper col-md-3">
 						<nav id="site-navigation-secondary" class="secondary-navigation" role="navigation">
