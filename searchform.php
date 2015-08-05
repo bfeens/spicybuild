@@ -1,4 +1,8 @@
-<!-- The Search form --> 
+<?php 
+
+// The Search form
+
+?>
 
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
 	<label>
