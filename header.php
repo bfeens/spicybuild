@@ -37,13 +37,13 @@
 							    </hgroup>
 							<?php endif; ?>
 					</div><!-- .site-branding -->
-					<div class="site-navigation-secondary-wrapper col-md-3">
+					<div class="site-navigation-secondary-wrapper col-md-4">
 						<nav id="site-navigation-secondary" class="secondary-navigation" role="navigation">
 							<!-- TODO: Figure out how to use this button <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Secondary Menu', 'spicy' ); ?></button>-->
 							<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu' ) ); ?>
 						</nav><!-- #site-navigation-secondary -->
 					</div><!-- .site-navigation-secondary-wrapper --> 
-					<div class="search-form-header col-md-5">
+					<div class="search-form-header col-md-4">
 						<?php get_search_form(); ?> 
 					</div>
 				</div>
