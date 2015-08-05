@@ -21,9 +21,8 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site"> <!-- Opens the page --> 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'spicy' ); ?></a>
-	<div class="header-wrapper container-fluid">
-		<div class="header-content container-fluid">
-			<div class="row">
+	<div class="header-wrapper">
+		<div class="header-content container">
 			<header id="masthead" class="site-header" role="banner">
 					<div class="site-branding col-md-4">
 								<?php if ( get_theme_mod( 'spicy_logo' ) ) : ?>
@@ -47,10 +46,12 @@
 						<?php get_search_form(); ?> 
 					</div>
 				</div>
+				<div class="site-navigation-primary-wrapper row">
 				<nav id="site-navigation-primary" class="main-navigation" role="navigation">
 					<!-- TODO: Figure out how to use this button <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'spicy' ); ?></button>-->
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 				</nav><!-- #site-navigation-primary -->
+				</div><!-- .site-navigation-primary-wrapper -->
 			</header><!-- #masthead -->
 		</div><!-- .header-content --> 
 	</div><!-- .header-wrapper --> 

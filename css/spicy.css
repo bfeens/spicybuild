@@ -52,8 +52,37 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	padding-top: 4px;
 }
 
-.site-navigation-secondary-wrapper { 
- 
+.site-navigation-primary-wrapper { 
+	background-color: #821F09;		/* TODO SASS Color Profile: Lighter Red */
+}
+
+.menu-primary-menu-categories-container { 
+	max-width: 980px;
+	margin: auto;
+}
+
+#site-navigation-primary ul { 
+	list-style-type: none; 
+	list-style-image: none; 
+	margin-top: 10px; 
+	margin-bottom: 15px;
+}
+
+#site-navigation-primary li {
+	display: inline; 
+	padding: 10px; 
+}
+
+#site-navigation-primary li:hover {
+	background-color: black; /* TEMP TEMP  TEMP TEMP  TEMP TEMP  TEMP TEMP */
+}
+
+
+
+#site-navigation-primary  a {
+	text-decoration:none; 
+	color: #fff9d8;  	/* TODO SASS Color Profile: Yellow */ 
+	padding: 8px 0px;
 }
 
 #site-navigation-secondary ul { 
@@ -72,7 +101,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 #site-navigation-secondary  a {
-	text-decoration:none; color: #fff9d8;  	/* TODO SASS Color Profile */ 
+	text-decoration:none; 
+	color: #fff9d8;  	/* TODO SASS Color Profile: Yellow */ 
 }
 
 #site-navigation-secondary  a:hover {

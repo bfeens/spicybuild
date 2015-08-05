@@ -29,10 +29,35 @@
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
 
+	/* 
+
+	2. Basic Structure 
+	==============================
+
+	*/ 
+
+	/* 	2.1. Header */ 
+
+		#site-navigation-secondary ul { 
+		float: none;
+	}
 
 }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
+
+	/* 
+
+	2. Basic Structure 
+	==============================
+
+	*/ 
+
+	/* 	2.1. Header */ 
+
+		#site-navigation-secondary ul { 
+		float: none;
+	}
 
 }
