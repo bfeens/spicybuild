@@ -25,7 +25,7 @@
 		<div class="header-content container">
 			<header id="masthead" class="site-header" role="banner">
 					<div class="site-branding col-md-4">
-								<?php if ( get_theme_mod( 'spicy_logo' ) ) : ?>
+								<?php if ( get_theme_mod( 'spicy_logo' ) ) : ?><!-- The logo --> 
 							    <div class='site-logo'>
 							        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'spicy_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 							    </div>

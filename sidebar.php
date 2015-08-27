@@ -1,3 +1,15 @@
-<!-- Sidebar file --> 
+<?php
+/**
+ * The sidebar containing the main widget area.
+ *
+ * @package spicy
+ */
 
-<!-- All of this is within scope and TK --> 
+if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	return;
+}
+?>
+
+<div id="secondary" class="widget-area" role="complementary">
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+</div><!-- #secondary -->

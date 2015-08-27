@@ -1,43 +1,69 @@
-<?php 
-
-/** 
- * Add theme support for stuff 
- */
-
-if ( ! function_exists( 'spicy_setup' ) ) :
+<?php
 /**
- * Sets up theme defaults and registers support for various WordPress features.
+ * Custom template tags for this theme.
  *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Eventually, some of the functionality here could be replaced by core features.
+ *
+ * @package spicy
  */
-function spicy_setup() {
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-		) 
-	);
+if ( ! function_exists( 'the_posts_navigation' ) ) :
+/**
+ * Display navigation to next/previous set of posts when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function the_posts_navigation() {
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
+	}
+	?>
+	<nav class="navigation posts-navigation" role="navigation">
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'spicy' ); ?></h2>
+		<div class="nav-links">
 
-	/* This theme uses wp_nav_menu() in two locations. */
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'spicy' ),
-		'secondary' => esc_html__( 'Secondary Menu', 'spicy' ),
-		) 
-	);
-} 
-endif; // spicy_setup
-add_action( 'after_setup_theme', 'spicy_setup' );
+			<?php if ( get_next_posts_link() ) : ?>
+			<div class="nav-previous"><?php next_posts_link( esc_html__( 'Older posts', 'spicy' ) ); ?></div>
+			<?php endif; ?>
 
+			<?php if ( get_previous_posts_link() ) : ?>
+			<div class="nav-next"><?php previous_posts_link( esc_html__( 'Newer posts', 'spicy' ) ); ?></div>
+			<?php endif; ?>
 
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+endif;
+
+if ( ! function_exists( 'the_post_navigation' ) ) :
+/**
+ * Display navigation to next/previous post when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function the_post_navigation() {
+	// Don't print empty markup if there's nowhere to navigate.
+	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+	$next     = get_adjacent_post( false, '', false );
+
+	if ( ! $next && ! $previous ) {
+		return;
+	}
+	?>
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'spicy' ); ?></h2>
+		<div class="nav-links">
+			<?php
+				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
+				next_post_link( '<div class="nav-next">%link</div>', '%title' );
+			?>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+endif;
 
 if ( ! function_exists( 'spicy_posted_on' ) ) :
 /**
@@ -70,7 +96,6 @@ function spicy_posted_on() {
 
 }
 endif;
-
 
 if ( ! function_exists( 'spicy_entry_footer' ) ) :
 /**
@@ -239,108 +264,3 @@ function spicy_category_transient_flusher() {
 }
 add_action( 'edit_category', 'spicy_category_transient_flusher' );
 add_action( 'save_post',     'spicy_category_transient_flusher' );
-
-
-function spicy_theme_customizer( $wp_customize ) {
-
-	/* Note: These logo fields can be deleted if you are using 
-	up-to-date Jetpack controls to build the logo */ 
-
-	/* 1. These are the fields to load in a new site logo */
-	$wp_customize->add_section( 'spicy_logo_section' , array(
-	    'title'       => __( 'Logo', 'spicy' ),
-	    'priority'    => 30,
-	    'description' => 'Upload a logo to replace the default site name and description in the header',
-		) 
-	);
-
-	/* 2. This adds the setting control to add the logo */
-	$wp_customize->add_setting( 'spicy_logo' );
-
-	/* 3. This builds the PHP controls */
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'spicy_logo', array(
-    	'label'    => __( 'Logo', 'spicy' ), 
-   		'section'  => 'spicy_logo_section',
-    	'settings' => 'spicy_logo',
-    	) 
-	) 
-);
-}
-add_action( 'customize_register', 'spicy_theme_customizer' );
-
-
-/**
- * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-function spicy_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'spicy' ),
-		'id'            => 'sidebar-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'spicy_widgets_init' );
-
-
-
-/**
- * Enables the Excerpt meta box in Page edit screen. This allows for a "top-content area" to display.
- */
-function wpcodex_add_excerpt_support_for_pages() {
-	add_post_type_support( 'page', 'excerpt' );
-}
-add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
-
-
-
-/**
- * Enables a featured image to display for pages
- */
-if ( function_exists( 'add_theme_support' ) ) { 
-    add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 9999, 9999, true ); // default Post Thumbnail dimensions (unlimited height, width)
-
-    // additional image sizes
-    // delete the next line if you do not need additional image sizes
-    add_image_size( 'category-thumb', 300, 9999 ); //300 pixels wide (and unlimited height)
-}
-
-
-/**
- * Enqueue scripts and styles.
- */
-function spicy_scripts() {
-
-	wp_enqueue_style( 'spicy-style', get_stylesheet_uri() );
-
-	/* Helping with breakpoints */
-	wp_enqueue_style( 'bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' ); 
-
-	wp_enqueue_style( 'google-font-roboto-slab', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,100,300' );
-
-	wp_enqueue_style( 'google-font-oswald', 'http://fonts.googleapis.com/css?family=Oswald:400,700,300' );
-
-	wp_enqueue_style( 'reset', get_template_directory_uri() . '/css/reset.css', 'bootstrap-min', '' , screen );
-
-	wp_enqueue_style( 'spicy-custom', get_template_directory_uri() . '/css/spicy.css', 'bootstrap-min', '' , screen );
-
-	wp_enqueue_style( 'spicy-media-queries', get_template_directory_uri() . '/css/spicy-media-queries.css', 'bootstrap-min', '' , screen );
-
-	wp_enqueue_script( 'spicy-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'spicy-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'spicy_scripts' );
-
-
-

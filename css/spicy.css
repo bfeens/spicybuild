@@ -25,8 +25,48 @@
 h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { 
 	font-family: 'Roboto Slab', Georgia, serif;
+	line-height: 1.25;
+    margin-bottom: 1em;
 }
 
+h1 { font-size: 1.4em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.1em; }
+
+p { 
+	font-family: arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.7em;
+	padding: 15px 0;
+}
+
+.entry-header .entry-title { 
+	text-transform: uppercase;
+	font-size: 2.2em;
+	font-family: 'Oswald', Arial, sans-serif;
+	font-weight: 700;
+	color: #ffffe9;				/* A really light yellow */
+	text-shadow: #333 1px 1px;
+	margin-bottom: 30px;
+}
+
+
+.excerpt-area p { 
+	padding: 20px 0 0 0;
+	font-size: 13px; 	
+    line-height: 1.7em;
+    margin-bottom: 20px;
+    text-shadow: #333 1px 1px;
+}
+
+article, .comments-area { 
+	z-index: 1000;			/* Helps put the featured image behind the content. */
+	position: relative;
+}
+
+.comments-area { 
+	background-color: rgba(260,260,260,.8);
+}
 
 /* 
 
@@ -35,10 +75,28 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 */ 
 
-#page { padding: 0px; } 
+/* 	2.X Page-level attributes */
+html, body { 
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#page { padding: 0px; 
+} 
+
+.site-content { background-color: #ddd1b3; 
+	min-height: 100%;}
+
+.content-area { 
+	max-width: 980px; 
+	margin: 0px auto 10px;
+	padding-top: 30px;
+	min-height: 100%;
+} 
 
 
-/* 	2.1. Header */ 
+/* 	2.X. Header */ 
 
 .header-wrapper { 
 	background-color: rgba(99,23,5,5);
@@ -64,8 +122,29 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 #site-navigation-primary ul { 
 	list-style-type: none; 
 	list-style-image: none; 
-	margin-top: 10px; 
-	margin-bottom: 15px;
+	margin: 8px 0;		/* Should be same height as '#site-navigation-primary a' padding */
+}
+
+#site-navigation-primary ul ul  { 
+	position:absolute;
+	left:10px;			/* Pay attention to this value. It may need to change as more menus are added */		
+	top:100%;
+	display:none;		/* Hides the second level navigation when not in use */
+	padding:0px;
+	margin:0px
+}
+
+#site-navigation-primary ul li:hover ul {
+	display:block;		/* Restores the second level navigation upon hover */ 
+}
+
+#site-navigation-primary ul ul a {
+	width:150px;
+}
+
+#site-navigation-primary ul ul li {
+	display:block;
+	margin:0px
 }
 
 #site-navigation-primary li {
@@ -74,15 +153,19 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 #site-navigation-primary li:hover {
-	background-color: black; /* TEMP TEMP  TEMP TEMP  TEMP TEMP  TEMP TEMP */
+	background-color: #fff9d8; 
 }
 
+#site-navigation-primary li:hover a { 
+	color: #495862;
+}
 
-
-#site-navigation-primary  a {
+#site-navigation-primary a {
+	font-size: 13px;
 	text-decoration:none; 
 	color: #fff9d8;  	/* TODO SASS Color Profile: Yellow */ 
 	padding: 8px 0px;
+	font-family: 'Roboto Slab', Georgia, serifs;
 }
 
 #site-navigation-secondary ul { 
@@ -118,6 +201,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 */ 
 
+.header-wrapper { 
+	z-index: 1000;
+	position: relative;
+}
+
 .site-branding { 
 	padding-top: 5px;
 }
@@ -134,7 +222,7 @@ input[type="search"] {  				/* Prevents the search field from growing too large.
 	float: right;
 	padding: .5rem 1rem .5rem 2rem;
 	font-size: 10px;
-	background-color: rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0); 	/* TODO Find the RGB for #495862 */
 	border: 2px solid rgb(156, 96, 81);
 	cursor: auto;
 	color: #fff9d8; 					/* TODO SASS Color Profile */ 
@@ -152,3 +240,40 @@ input[type="search"] {  				/* Prevents the search field from growing too large.
 .search-box .search-submit { 
 	display: none;
 }
+
+.entry-content { 
+	background-color: #ffffe9;
+	padding: 10px 55px;
+	z-index: 10;
+	position: relative;
+}
+
+/* 
+
+	POST ELEMENTS 
+
+*/ 
+
+.content-header-area { 
+	padding-top: 31px;
+	margin: 0 55px; 
+	position: relative;
+	z-index: 10;
+}
+
+.excerpt-area { 
+	max-width: 33%;
+	color: #ffffe9;				/* A really light yellow */
+
+}
+
+.full-canvas { 					/* Featured image, large, behind the content */
+	background-size: cover;		
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-height: 800px;
+	z-index: 1;
+	max-width: 1280px;
+}
+
